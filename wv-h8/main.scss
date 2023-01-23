@@ -1,0 +1,40 @@
+@import "./header", "./variables", "./footer";
+
+body {
+  margin: 0;
+}
+main {
+  font-family: "Open Sans", sans-serif;
+  margin-left: $mainMargin; /* Same width as the sidebar + left position in px */
+
+  padding: 0px 10px;
+}
+
+#art1 {
+  p {
+    font-family: "Roboto", sans-serif; /* Add 'Roboto' here */
+    font-size: 18px;
+    line-height: 1.8em;
+  }
+}
+
+
+#art2 {
+  @extend #art1;
+  p {
+    color: #5d6063;
+  }
+}
+
+#art3 {
+  @extend #art2;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
