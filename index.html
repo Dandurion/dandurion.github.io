@@ -13,8 +13,8 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-sm navbar-dark">
+  <body class="d-flex flex-column">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
       <div class="container-fluid">
         <img src="images/logo.svg" width="50" alt="LOGO" />
         <button
@@ -44,13 +44,13 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container-margin container ">
       <p class="h1 text-center">
         Hi! My name is Vadim Shestunov and this is my homepage.
       </p>
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4 text-center">
-          <div class="card border">
+          <div class="iCard card border">
             <img src="images/me.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">About me</h5>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 text-center">
-          <div class="card border">
+          <div class="iCard card border">
             <img src="images/jio.PNG" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Portfolio</h5>
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 text-center">
-          <div class="card border">
+          <div class="iCard card border">
             <img src="images/band.jpeg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Hobbies</h5>
@@ -90,5 +90,11 @@
         </div>
       </div>
     </div>
+    
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
   </body>
 </html>
