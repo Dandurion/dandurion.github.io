@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <script src="h07t03-init_files/react.js"></script>
+    <script src="h07t03-init_files/react-dom.js"></script>
+    <script src="h07t03-init_files/browser.js"></script>
+
+    <style>
+      .box {
+        border: 1px dashed #aaa;
+        padding: 15px;
+      }
+
+      button {
+        background-color: #069;
+        border-radius: 5px;
+        color: #fff;
+        margin-bottom: 5px;
+        padding: 5px 15px;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Tuota tämä ReactDOM.render()-metodilla:</h3>
+    <div id="malli" class="box">
+      <div>
+        <button>Nappi</button>
+        <p>Mieleni minun tekevi, aivoni ajattelevi</p>
+      </div>
+    </div>
+
+    <h3>Sinun ratkaisu:</h3>
+    <div id="ratkaisu" class="box"></div>
+
+    <script type="text/babel">
+      let kalevalaText = "Mieleni minun tekevi, aivoni ajattelevi";
+
+      class BoxComponent extends React.Component {
+        render(){
+          return <div><button>Nappi</button><p>{kalevalaText}</p></div>;
+        }
+      }
+
+      ReactDOM.render(
+        // Kirjoita ohjelmakoodisi myös tähän
+        <BoxComponent />,document.getElementById("ratkaisu")
+      );
+    </script>
+  </body>
+</html>

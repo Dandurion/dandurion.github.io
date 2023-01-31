@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <canvas id="c1" width="600" height="300"></canvas>
+    <canvas id="c2" width="600" height="300"></canvas>
+    <script>
+        let canvas1 = document.getElementById("c1");
+        let ctx = canvas1.getContext("2d");
+
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, c1.width, c1.height);
+
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(0, 112, c1.width, c1.height/4);
+        ctx.fillRect(125, 0, c1.height/4, c1.width);
+
+        let canvas2 = document.getElementById("c2");
+        let ctx2 = canvas2.getContext("2d");
+
+        ctx2.fillStyle = "green";
+        ctx2.fillRect(0, 0, c1.width, c1.height);
+        ctx2.beginPath();
+        ctx2.moveTo(0, 0);
+        ctx2.lineTo(600, 150);
+        ctx2.lineTo(0, 300);
+        ctx2.closePath();
+        ctx2.fillStyle = "white";
+        ctx2.fill();
+
+        ctx2.beginPath();
+        ctx2.moveTo(0, 4);
+        ctx2.lineTo(590, 150);
+        ctx2.lineTo(0, 296);
+        ctx2.closePath();
+        ctx2.fillStyle = "yellow";
+        ctx2.fill();
+
+        ctx2.beginPath();
+        ctx2.moveTo(0, 0);
+        ctx2.lineTo(280, 150);
+        ctx2.lineTo(0, 300);
+        ctx2.closePath();
+        ctx2.fillStyle = "black";
+        ctx2.fill();
+
+        ctx2.beginPath();
+        ctx2.moveTo(0, 6);
+        ctx2.lineTo(270, 150);
+        ctx2.lineTo(0, 294);
+        ctx2.closePath();
+        ctx2.fillStyle = "red";
+        ctx2.fill();
+
+    </script>
+
+</body>

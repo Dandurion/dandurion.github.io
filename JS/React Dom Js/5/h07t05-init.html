@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+
+    <style>
+      body {
+        width: 400px;
+        margin: auto;
+      }
+      .box {
+        border: 1px dashed #000;
+        padding: 15px;
+        background-color: #adbed8;
+      }
+      input[type="text"] {
+        width: 200px;
+      }
+
+      button {
+        background-color: #069;
+        border-radius: 5px;
+        color: #fff;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        padding: 5px 15px;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Nelilaskin</h3>
+    <div id="ratkaisu" class="box"></div>
+
+    <script type="text/babel">
+      class Nelilaskin extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { total: "", curType: "" };
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick(index, calcType) {
+          // Haetaan kaikki button-elementit
+          var myElements = document.querySelectorAll("button");
+
+          // Asetetaan kaikille buttoneille alkuperäinen väri:
+          for (var i = 0; i < myElements.length; i++) {
+            myElements[i].style.backgroundColor = "#069";
+          }
+          console.log(calcType.target.id);
+          console.log(index);
+          calcType.target.style.backgroundColor = "green";
+          let n1 = parseInt(this.refs.n1.value);
+          let n2 = parseInt(this.refs.n2.value);
+          let tot = 0;
+          switch (index) {
+            case "+": {
+				tot = n1 + n2;
+              this.setState({ total: tot });
+              break;
+            }
+            case "-": {
+				tot = n1 - n2;
+              this.setState({ total: tot });
+              break;
+            }
+            case "*": {
+				tot = n1 * n2;
+              this.setState({ total: tot });
+              break;
+            }
+            case "/": {
+				tot = (n1 / n2).toFixed(2);
+              this.setState({ total: tot });
+              break;
+            }
+            default:
+              break;
+          }
+          console.log(tot);
+        }
+
+        render() {
+          return (
+            <div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Luku1:</td>
+                    <td>
+                      <input type="text" ref="n1" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Luku2:</td>
+                    <td>
+                      <input type="text" ref="n2" onChange={this.handleClick} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tulos:</td>
+                    <td>
+                      <input type="text" ref="n3" value={this.state.total} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Laske</td>
+                    <td>
+                      <button
+                        id="sum"
+                        ref="sum"
+                        onClick={this.handleClick.bind(this, "+")}
+                      >
+                        +
+                      </button>
+                      <button
+                        id="diff"
+                        ref="diff"
+                        onClick={this.handleClick.bind(this, "-")}
+                      >
+                        -
+                      </button>
+                      <button
+                        id="multiply"
+                        ref="multiply"
+                        onClick={this.handleClick.bind(this, "*")}
+                      >
+                        *
+                      </button>
+                      <button
+                        id="divide"
+                        ref="divide"
+                        onClick={this.handleClick.bind(this, "/")}
+                      >
+                        /
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Nelilaskin />, document.getElementById("ratkaisu"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head> </head>
+<body>
+  <p id="output"></p>
+
+  <canvas id="c1" width="800" height="600"></canvas>
+
+  <div class="sc">
+    <input
+      type="range"
+      min="0"
+      max="200"
+      value="0"
+      class="slider"
+      id="myRange"
+    />
+  </div>
+  <script>
+    var slider = document.getElementById("myRange");
+    console.log(slider.value);
+
+    var c = document.getElementById("c1");
+    var ctx = c.getContext("2d");
+
+    document.getElementById("myRange").value = "0";
+
+    ctx.beginPath();
+    ctx.arc(300, 300, 200, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    slider.oninput = function () {
+      updateRect();
+    };
+    document.getElementById("output").innerHTML = "Waterline height: " + 0 + " cm <br>" + "Liquid volume: 0 litres"
+      ;
+    function updateRect() {
+      ctx.clearRect(0, 0, 800, 600);
+
+      let slide = slider.value / 200;
+      let a1 = (0.5 - slide) * Math.PI;
+      let a2 = (0.5 + slide) * Math.PI;
+
+      console.log(slider.value);
+
+      ctx.beginPath();
+      ctx.arc(300, 300, 200, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(300, 300, 200, a1, a2);
+      ctx.closePath();
+      ctx.fillStyle = "blue";
+      ctx.fill();
+
+      document.getElementById("output").innerHTML = "Waterline height: " + slider.value + " cm <br>" + "Liquid volume: " + calculate(slider.value) + " litres"
+      ;
+    }
+
+    function calculate(h) {
+      let r = 100;
+      let area =
+        Math.pow(r, 2) * Math.acos((r - h) / r) -
+        (r - h) * Math.sqrt(2 * r * h - Math.pow(h, 2));
+      let vol = area * 100 * 0.001;
+      vol = precise(vol);
+      return vol;
+    }
+    function precise(x) {
+      return Number.parseFloat(x).toFixed(2);
+    }
+  </script>
+</body>

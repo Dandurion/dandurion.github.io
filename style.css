@@ -10794,6 +10794,10 @@ body {
   margin-bottom: 4rem;
 }
 
+.list-group {
+  margin-top: 10rem;
+}
+
 .h1 {
   padding-top: 10rem;
   padding-bottom: 8rem;

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+
+    <style>
+      body {
+        width: 400px;
+        margin: auto;
+      }
+      img{
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Autolaskuri</h2>
+    <h3>Klikkaa mieleistä auton kuvaa..</h3>
+    <div id="autot"></div>
+    <script type="text/babel">
+      class Autolaskuri extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            carCount: [0, 0]
+          };
+          this.onImageClicked = this.onImageClicked.bind(this);
+        }
+
+        onImageClicked(id, index) {
+          console.log(id + " kuvaa klikattu");
+          let temp = this.state.carCount;
+          if (id === "wagen") {
+            
+            temp[0]++;
+          } else if (id === "badboy") {
+            
+            temp[1]++;
+          }
+          this.setState({ carCount: temp });
+        }
+
+        render() {
+          return (
+            <div>
+              <p>Wagen: {this.state.carCount[0]}</p>
+              <img
+                src="inits/wagen.jpg"
+                onClick={this.onImageClicked.bind(this, "wagen")}
+              />
+              <p>This bad boy: {this.state.carCount[1]}</p>
+              <img
+                src="inits/badboy.jpg"
+                onClick={this.onImageClicked.bind(this, "badboy")}
+              />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Autolaskuri />, document.getElementById("autot"));
+    </script>
+      
+   
+  </body>
+</html>
